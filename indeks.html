@@ -373,3 +373,27 @@
     </script>
 </body>
 </html>
+<form onsubmit="sendToWhatsApp(event)">
+  <input type="text" id="oyunAdi" placeholder="Oyun İçi Adın (Nick)" required>
+  <input type="number" id="yas" placeholder="Yaşın" required>
+  <input type="text" id="tecrube" placeholder="Daha Önceki Klanların" required>
+  <button type="submit">WhatsApp ile Başvuru Gönder</button>
+</form>
+
+<script>
+function sendToWhatsApp(event) {
+  event.preventDefault();
+  
+  const phoneNumber = "905444602137"; // Senin numaran
+  
+  const oyunAdi = document.getElementById("oyunAdi").value;
+  const yas = document.getElementById("yas").value;
+  const tecrube = document.getElementById("tecrube").value;
+  
+  const mesaj = `⚔️ *Yeni Klan Başvurusu!*\n\n👤 *Adı:* ${oyunAdi}\n🎂 *Yaş:* ${yas}\n🛡️ *Tecrübe:* ${tecrube}`;
+  
+  const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(mesaj)}`;
+  
+  window.open(url, "_blank");
+}
+</script>

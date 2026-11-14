@@ -45,10 +45,45 @@
         .clan-motto {
             font-size: 11px;
             color: #b8b8b8;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             font-style: italic;
             border-bottom: 1px solid rgba(255, 0, 60, 0.3);
             padding-bottom: 6px;
+        }
+        /* Müzik Kontrol Paneli */
+        .music-bar {
+            background: rgba(255, 0, 60, 0.15);
+            border: 1px solid rgba(255, 0, 60, 0.4);
+            border-radius: 6px;
+            padding: 8px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 11px;
+            color: #ff335b;
+            font-weight: bold;
+        }
+        .music-buttons {
+            display: flex;
+            gap: 5px;
+        }
+        .music-btn {
+            background: #ff003c;
+            color: #fff;
+            border: none;
+            padding: 5px 8px;
+            border-radius: 4px;
+            font-size: 9px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 0 0 8px rgba(255, 0, 60, 0.6);
+            transition: 0.3s;
+        }
+        .music-btn:hover {
+            background: #ff1a4e;
+            box-shadow: 0 0 12px rgba(255, 0, 60, 0.9);
         }
         .section-title {
             color: #ff003c;
@@ -98,7 +133,7 @@
             border-color: #ff003c;
             box-shadow: 0 0 10px rgba(255, 0, 60, 0.7);
         }
-        button {
+        button[type="submit"] {
             background: linear-gradient(135deg, #ff003c, #990024);
             color: white;
             border: none;
@@ -113,7 +148,7 @@
             box-shadow: 0 0 12px rgba(255, 0, 60, 0.5);
             margin-top: 2px;
         }
-        button:hover {
+        button[type="submit"]:hover {
             background: linear-gradient(135deg, #ff1a4e, #cc0030);
             box-shadow: 0 0 20px rgba(255, 0, 60, 0.8);
         }
@@ -143,6 +178,21 @@
         <h1>亗SİPAHİLER亗</h1>
         <div class="clan-motto">"Zirve geçici bir hevestir, ben nirvana'yı kalıcı kıldım."</div>
         
+        <!-- Müzik Kontrol Paneli (Başlat, Durdur, Başa Sar) -->
+        <div class="music-bar">
+            <span>🎵 Klan Fon Müziği</span>
+            <div class="music-buttons">
+                <button class="music-btn" onclick="playMusic()">Başlat</button>
+                <button class="music-btn" onclick="pauseMusic()">Durdur</button>
+                <button class="music-btn" onclick="restartMusic()">Başa Sar</button>
+            </div>
+        </div>
+
+        <!-- Gizli Ses Oynatıcı (loop özelliği ile otomatik tekrarlar) -->
+        <audio id="clanAudio" loop>
+            <source src="sarki.mp3" type="audio/mp3">
+        </audio>
+
         <div class="section-title">📜 Klan Bilgileri & Kurallar</div>
         <div class="info-box">
             <p>• Aktif, sadık ve iletişimine önem veren oyuncular kabul edilir.</p>
@@ -174,18 +224,35 @@
             <button type="submit">WhatsApp ile Başvuru Gönder</button>
         </form>
 
-        <!-- Güvenlik ve Gizlilik Uyarısı -->
         <div class="security-notice">
             🔒 Tüm başvurular şifrelenmiş kanallar üzerinden doğrudan klan liderliğine iletilir. Kişisel bilgileriniz güvence altındadır.
         </div>
 
-        <!-- Şekilli İmza -->
         <div class="site-owner">
             亗DOMİNATOR亗
         </div>
     </div>
 
     <script>
+        const audio = document.getElementById("clanAudio");
+
+        function playMusic() {
+            audio.play().catch(error => {
+                console.log("Ses oynatılamadı:", error);
+            });
+        }
+
+        function pauseMusic() {
+            audio.pause();
+        }
+
+        function restartMusic() {
+            audio.currentTime = 0;
+            audio.play().catch(error => {
+                console.log("Ses oynatılamadı:", error);
+            });
+        }
+
         function sendToWhatsApp(event) {
             event.preventDefault();
             

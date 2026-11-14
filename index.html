@@ -30,7 +30,7 @@
             border-radius: 14px;
             width: 100%;
             max-width: 420px;
-            max-height: 92vh;
+            max-height: 94vh;
             overflow-y: auto;
             box-shadow: 0 0 25px rgba(255, 0, 60, 0.35);
             text-align: center;
@@ -79,7 +79,7 @@
             flex-direction: column;
             gap: 8px;
         }
-        input {
+        input, select {
             width: 100%;
             padding: 9px 12px;
             background: rgba(0, 0, 0, 0.7);
@@ -90,7 +90,11 @@
             outline: none;
             transition: 0.3s;
         }
-        input:focus {
+        select option {
+            background: #121215;
+            color: #fff;
+        }
+        input:focus, select:focus {
             border-color: #ff003c;
             box-shadow: 0 0 10px rgba(255, 0, 60, 0.7);
         }
@@ -141,6 +145,15 @@
             <input type="text" id="oyunAdi" placeholder="Oyun İçi Adın (Nick)" required>
             <input type="number" id="yas" placeholder="Yaşın" required>
             <input type="text" id="tecrube" placeholder="Tecrüben / Eski Klanların" required>
+            
+            <!-- Rol Seçim Alanı -->
+            <select id="rol" required>
+                <option value="" disabled selected>Seçilmek İstenen Rolü Seç</option>
+                <option value="Farmcı">🌾 Farmcı</option>
+                <option value="Builder">🔨 Builder</option>
+                <option value="PVP">⚔️ PVP</option>
+            </select>
+
             <button type="submit">WhatsApp ile Başvuru Gönder</button>
         </form>
     </div>
@@ -153,8 +166,9 @@
             const oyunAdi = document.getElementById("oyunAdi").value;
             const yas = document.getElementById("yas").value;
             const tecrube = document.getElementById("tecrube").value;
+            const rol = document.getElementById("rol").value;
 
-            const mesaj = `👑 *Yeni Klan Başvurusu!* 👑\n\n👤 *Adı:* ${oyunAdi}\n🎂 *Yaş:* ${yas}\n⚔️ *Tecrübe:* ${tecrube}`;
+            const mesaj = `👑 *Yeni Klan Başvurusu!* 👑\n\n👤 *Adı:* ${oyunAdi}\n🎂 *Yaş:* ${yas}\n⚔️ *Tecrübe:* ${tecrube}\n🎯 *Seçtiği Rol:* ${rol}`;
             const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(mesaj)}`;
 
             window.open(url, "_blank");

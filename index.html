@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>亗SİPAHİLER亗 Clan Başvuru</title>
+    <title>亗SİPAHİLER亗 | Klan Resmi Başvuru Merkezi</title>
     <style>
         * {
             margin: 0;
@@ -12,7 +12,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         body {
-            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(15, 17, 26, 0.9)), url('130858.jpg') no-repeat center center fixed;
+            background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(10, 10, 15, 0.95)), url('130858.jpg') no-repeat center center fixed;
             background-size: cover;
             color: #fff;
             min-height: 100vh;
@@ -23,60 +23,100 @@
             padding: 20px;
         }
         .container {
-            background: rgba(20, 20, 20, 0.85);
-            border: 1px solid rgba(220, 20, 60, 0.4);
-            backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 12px;
+            background: rgba(12, 12, 15, 0.9);
+            border: 1px solid rgba(255, 0, 60, 0.6);
+            backdrop-filter: blur(15px);
+            padding: 25px;
+            border-radius: 14px;
             width: 100%;
-            max-width: 400px;
-            box-shadow: 0 10px 30px rgba(220, 20, 60, 0.3);
+            max-width: 450px;
+            box-shadow: 0 0 25px rgba(255, 0, 60, 0.35), inset 0 0 15px rgba(255, 0, 60, 0.1);
             text-align: center;
+            margin-bottom: 20px;
         }
         h1 {
-            color: #ff1e38;
-            font-size: 24px;
-            margin-bottom: 20px;
-            text-shadow: 0 0 10px rgba(255, 30, 56, 0.5);
-            letter-spacing: 2px;
+            color: #ff003c;
+            font-size: 26px;
+            margin-bottom: 5px;
+            text-shadow: 0 0 10px rgba(255, 0, 60, 0.8), 0 0 20px rgba(255, 0, 60, 0.4);
+            letter-spacing: 3px;
+        }
+        .clan-motto {
+            font-size: 12px;
+            color: #b8b8b8;
+            margin-bottom: 18px;
+            font-style: italic;
+            border-bottom: 1px solid rgba(255, 0, 60, 0.3);
+            padding-bottom: 10px;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+        }
+        .section-title {
+            color: #ff003c;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-align: left;
+            text-shadow: 0 0 8px rgba(255, 0, 60, 0.6);
+        }
+        .info-box, .roster-box {
+            background: rgba(5, 5, 8, 0.7);
+            border-left: 3px solid #ff003c;
+            box-shadow: inset 0 0 10px rgba(255, 0, 60, 0.05);
+            padding: 10px 12px;
+            margin-bottom: 14px;
+            text-align: left;
+            font-size: 12px;
+            color: #e0e0e0;
+            border-radius: 6px;
+        }
+        .info-box p, .roster-box p {
+            margin-bottom: 5px;
+        }
+        .roster-box strong {
+            color: #fff;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
         form {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
         }
         input {
             width: 100%;
-            padding: 12px 15px;
-            background: rgba(0, 0, 0, 0.6);
-            border: 1px solid #444;
+            padding: 11px 14px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(255, 0, 60, 0.4);
             border-radius: 8px;
             color: #fff;
-            font-size: 15px;
+            font-size: 14px;
             outline: none;
             transition: 0.3s;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8);
         }
         input:focus {
-            border-color: #ff1e38;
-            box-shadow: 0 0 8px rgba(255, 30, 56, 0.4);
+            border-color: #ff003c;
+            box-shadow: 0 0 12px rgba(255, 0, 60, 0.7), inset 0 0 5px rgba(255, 0, 60, 0.3);
         }
         button {
-            background: linear-gradient(135deg, #ff1e38, #b3001b);
+            background: linear-gradient(135deg, #ff003c, #990024);
             color: white;
             border: none;
             padding: 12px;
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: bold;
             cursor: pointer;
             transition: 0.3s;
-            margin-top: 10px;
+            margin-top: 5px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            box-shadow: 0 0 15px rgba(255, 0, 60, 0.5);
         }
         button:hover {
-            background: linear-gradient(135deg, #ff3852, #d10022);
-            box-shadow: 0 0 15px rgba(255, 30, 56, 0.6);
+            background: linear-gradient(135deg, #ff1a4e, #cc0030);
+            box-shadow: 0 0 25px rgba(255, 0, 60, 0.8);
         }
     </style>
 </head>
@@ -84,10 +124,31 @@
 
     <div class="container">
         <h1>亗SİPAHİLER亗</h1>
+        <div class="clan-motto">"Zirve geçici bir hevestir, ben nirvana'yı kalıcı kıldım."</div>
+        
+        <!-- Klan Bilgileri ve Kurallar -->
+        <div class="section-title">📜 Klan Bilgileri & Kurallar</div>
+        <div class="info-box">
+            <p>• Aktif, sadık ve iletişimine önem veren oyuncular kabul edilir.</p>
+            <p>• Klan içi saygı ve yardımlaşma en temel kuralımızdır.</p>
+            <p>• Etkinliklere ve klan savaşlarına katılım zorunludur.</p>
+        </div>
+
+        <!-- Yönetim Kadrosu -->
+        <div class="section-title">👑 Yönetim Kadrosu</div>
+        <div class="roster-box">
+            <p>👑 <strong>Lider:</strong> 亗DOMİNATOR亗</p>
+            <p>⚔️ <strong>Subay:</strong> 亗DeathWish亗</p>
+            <p>⚔️ <strong>Subay:</strong> 亗ZeroMercy亗</p>
+            <p>⚔️ <strong>Subay:</strong> 亗赛啊苏拉卡慕亗</p>
+        </div>
+
+        <!-- Başvuru Formu -->
+        <div class="section-title">📝 Katılım Başvuru Formu</div>
         <form onsubmit="sendToWhatsApp(event)">
             <input type="text" id="oyunAdi" placeholder="Oyun İçi Adın (Nick)" required>
             <input type="number" id="yas" placeholder="Yaşın" required>
-            <input type="text" id="tecrube" placeholder="Daha Önceki Klanların / Tecrübe" required>
+            <input type="text" id="tecrube" placeholder="Tecrüben / Eski Klanların" required>
             <button type="submit">WhatsApp ile Başvuru Gönder</button>
         </form>
     </div>
@@ -96,7 +157,7 @@
         function sendToWhatsApp(event) {
             event.preventDefault();
             
-            const phoneNumber = "905444602137"; // Senin numaran
+            const phoneNumber = "905444602137";
             const oyunAdi = document.getElementById("oyunAdi").value;
             const yas = document.getElementById("yas").value;
             const tecrube = document.getElementById("tecrube").value;

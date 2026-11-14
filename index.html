@@ -178,7 +178,7 @@
         <h1>亗SİPAHİLER亗</h1>
         <div class="clan-motto">"Zirve geçici bir hevestir, ben nirvana'yı kalıcı kıldım."</div>
         
-        <!-- Müzik Kontrol Paneli (Başlat, Durdur, Başa Sar) -->
+        <!-- Müzik Kontrol Paneli -->
         <div class="music-bar">
             <span>🎵 Klan Fon Müziği</span>
             <div class="music-buttons">
@@ -188,7 +188,7 @@
             </div>
         </div>
 
-        <!-- Gizli Ses Oynatıcı (loop özelliği ile otomatik tekrarlar) -->
+        <!-- Gizli Ses Oynatıcı -->
         <audio id="clanAudio" loop>
             <source src="sarki.mp3" type="audio/mp3">
         </audio>
@@ -209,7 +209,7 @@
         </div>
 
         <div class="section-title">📝 Katılım Başvuru Formu</div>
-        <form onsubmit="sendToWhatsApp(event)">
+        <form onsubmit="sendToTelegram(event)">
             <input type="text" id="oyunAdi" placeholder="Oyun İçi Adın (Nick)" required>
             <input type="number" id="yas" placeholder="Yaşın" required>
             <input type="text" id="tecrube" placeholder="Tecrüben / Eski Klanların" required>
@@ -221,11 +221,11 @@
                 <option value="PVP">⚔️ PVP</option>
             </select>
 
-            <button type="submit">WhatsApp ile Başvuru Gönder</button>
+            <button type="submit" id="submitBtn">GÖNDER</button>
         </form>
 
         <div class="security-notice">
-            🔒 Tüm başvurular şifrelenmiş kanallar üzerinden doğrudan klan liderliğine iletilir. Kişisel bilgileriniz güvence altındadır.
+            🔒 Tüm başvurular doğrudan şifreli hat üzerinden klan liderliğine iletilir.
         </div>
 
         <div class="site-owner">
@@ -253,19 +253,41 @@
             });
         }
 
-        function sendToWhatsApp(event) {
+        function sendToTelegram(event) {
             event.preventDefault();
             
-            const phoneNumber = "905444602137";
+            const btn = document.getElementById("submitBtn");
+            btn.innerText = "GÖNDERİLİYOR...";
+            btn.disabled = true;
+
             const oyunAdi = document.getElementById("oyunAdi").value;
             const yas = document.getElementById("yas").value;
             const tecrube = document.getElementById("tecrube").value;
             const rol = document.getElementById("rol").value;
 
-            const mesaj = `👑 *Yeni Klan Başvurusu!* 👑\n\n👤 *Adı:* ${oyunAdi}\n🎂 *Yaş:* ${yas}\n⚔️ *Tecrübe:* ${tecrube}\n🎯 *Seçtiği Rol:* ${rol}`;
-            const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(mesaj)}`;
+            const token = "8883328494:AAEc381oBIsjvd2Af5lrU67xKQ2A5Xl_ymQ";
+            const chatId = "8808353211";
 
-            window.open(url, "_blank");
+            const mesaj = `👑 *Yeni Klan Başvurusu!* 👑\n\n👤 *Adı:* ${oyunAdi}\n🎂 *Yaş:* ${yas}\n⚔️ *Tecrübe:* ${tecrube}\n🎯 *Seçtiği Rol:* ${rol}`;
+
+            const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(mesaj)}&parse_mode=Markdown`;
+
+            fetch(url)
+                .then(response => {
+                    if (response.ok) {
+                        alert("Başvurunuz başarıyla klan liderliğine iletildi!");
+                        document.querySelector("form").reset();
+                    } else {
+                        alert("Bir hata oluştu, lütfen tekrar deneyin.");
+                    }
+                    btn.innerText = "GÖNDER";
+                    btn.disabled = false;
+                })
+                .catch(error => {
+                    alert("Bağlantı hatası oluştu.");
+                    btn.innerText = "GÖNDER";
+                    btn.disabled = false;
+                });
         }
     </script>
 </body>
